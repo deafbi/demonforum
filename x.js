@@ -1,1 +1,1 @@
-alert(1)
+prompt(8)
